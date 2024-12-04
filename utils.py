@@ -55,7 +55,7 @@ def collect_acts(dataset_name, model, layer, noperiod=False, center=True, scale=
     activation_files = glob(os.path.join(directory, f'layer_{layer}_*.pt'))
     if len(activation_files) == 0:
         raise ValueError(f"Dataset {dataset_name} not found.")
-    acts = [t.load(os.path.join(directory, f'layer_{layer}_{i}.pt')).to(device) for i in range(0, ACTS_BATCH_SIZE * len(activation_files), ACTS_BATCH_SIZE)]
+    acts = [t.load(os.path.join(directory, f'layer_{layer}_{i}.pt'), weights_only=False).to(device) for i in range(0, ACTS_BATCH_SIZE * len(activation_files), ACTS_BATCH_SIZE)]
     acts = t.cat(acts, dim=0).float().to(device)
     if center:
         acts = acts - t.mean(acts, dim=0)
