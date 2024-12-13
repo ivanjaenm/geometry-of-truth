@@ -21,7 +21,7 @@ def get_pcs(X, k=2, offset=0):
     cov_mat = t.mm(X.t(), X) / (X.size(0) - 1)
     
     # Perform eigen decomposition
-    eigenvalues, eigenvectors = t.linalg.eigh(cov_mat)
+    eigenvalues, eigenvectors = t.linalg.eigh(cov_mat[:-1, :-1])
     
     # Since the eigenvalues and vectors are not necessarily sorted, we do that now
     sorted_indices = t.argsort(eigenvalues, descending=True)

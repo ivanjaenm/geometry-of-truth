@@ -60,7 +60,7 @@ class TruthData:
         df = self.df.loc[plot_datasets]
         acts = df['activation'].tolist()
         acts = t.stack(acts, dim=0)
-        proj = t.mm(acts, pcs)
+        proj = t.mm(acts[:, :-1], pcs)
 
         # add projected data to df
         for dim in range(dimensions):
