@@ -1,4 +1,4 @@
-# CS 839 Final Project - The Multi-modal Geometry of Truth
+# CS 839 Final Project - The Multimodal Geometry of Truth
 
 ## Motivation
 
